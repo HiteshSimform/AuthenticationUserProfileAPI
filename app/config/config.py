@@ -10,6 +10,9 @@ class Settings(BaseSettings):
     POSTGRES_DATABASE_URL: str
     SQLITE_DATABASE_URL: str
     SQLALCHEMY_ECHO: bool = True
+    SECRET_KEY: str
+    ALGORITHM : str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
 
     class Config:
         env_file = ".env"

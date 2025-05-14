@@ -33,7 +33,7 @@ class UserCreate(BaseModel):
 
 class UserLogin(BaseModel):
     username: str
-    hashed_password: str
+    password: str
 
 
 class UserUpdate(BaseModel):
@@ -49,7 +49,7 @@ class UserOut(BaseModel):
     username: str
     email: EmailStr
     full_name: Optional[str]
-    bio: Optional[str]
+    bio: Optional[str]  
     age: Optional[int]
     gender: Gender
     role: UserRole

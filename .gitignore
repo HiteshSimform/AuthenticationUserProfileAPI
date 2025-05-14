@@ -1,0 +1,69 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# FastAPI server (Uvicorn) logs
+*.log
+
+# Virtual environment
+.venv/
+env/
+venv/
+.venv/
+fastapi-env/
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml
+
+# Coverage reports
+.coverage
+*.coveragerc
+coverage.xml
+*.tox/
+*.nox/
+*.coverage.*
+
+# Unit test output
+nosetests.xml
+pytest-debug.log
+
+# Local environment variables
+.env
+*.env
+
+# Docker
+docker-compose.override.yml
+*.dockerfile
+
+# Jupyter Notebook files
+.ipynb_checkpoints/
+
+# Pytest cache
+.cache/
+
+# MyPy
+.mypy_cache/
+
+# Sphinx documentation
+_docs/
+
+# Build and distribution files
+build/
+dist/
+*.egg-info/
+
+# Python packaging
+*.whl
+*.tar.gz
+*.zip
+
+# AWS credentials (or any cloud service secrets)
+*.pem
+*.key
+
+# JetBrains specific files (PyCharm, IntelliJ, etc.)
+.idea/
