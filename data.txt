@@ -1,0 +1,10 @@
+{
+  "username": "Artist_123",
+  "email": "artistkarm2211@gmail.com",
+  "hashed_password": "Artist@123",
+  "full_name": "Artist",
+  "bio": "Artist",
+  "age": 100,
+  "gender": "male",
+  "role": "admin"
+}

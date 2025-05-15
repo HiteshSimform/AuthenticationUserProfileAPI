@@ -6,6 +6,7 @@ from contextlib import asynccontextmanager
 from model.user import User
 from routers import user_router, auth_router, profile_router
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_all_tables()
