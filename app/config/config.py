@@ -14,12 +14,12 @@ class Settings(BaseSettings):
     ALGORITHM: str
     ACCESS_TOKEN_EXPIRE_MINUTES: int
     SMTP_SERVER: str
-    SMTP_PORT:int
+    SMTP_PORT: int
     EMAIL_SENDER_ADDRESS: str
     EMAIL_SENDER_PASSWORD: str
     REDIS_BROKER_URL: str
     REDIS_RESULT_BACKEND: str
-    
+
     class Config:
         env_file = ".env"
 

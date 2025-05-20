@@ -8,3 +8,9 @@
   "gender": "male",
   "role": "admin"
 }
+
+refactoring code
+
+'' = lazy loading in django
+
+ec2

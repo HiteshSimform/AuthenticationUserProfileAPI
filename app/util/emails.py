@@ -7,7 +7,7 @@
 # def send_registration_email(to_email: str, username: str):
 #     subject = "Welcome to Our App!"
 #     content = f"Hello {username},\n\nThanks for registering with us."
-    
+
 #     message = EmailMessage()
 #     message["From"] = settings.EMAIL_SENDER_ADDRESS
 #     message["To"] = to_email
@@ -29,6 +29,7 @@
 
 import smtplib
 from email.message import EmailMessage
+
 
 def send_email(subject: str, to_email: str, body: str):
     EMAIL_HOST = "smtp.gmail.com"

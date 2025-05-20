@@ -29,4 +29,4 @@ def send_email(to_email: str, subject: str, body: str):
             smtp.send_message(msg)
         print("Email sent")
     except Exception as e:
-        print("Error : ",e)
+        print("Error : ", e)

@@ -37,6 +37,7 @@ def delete_user_service(db: Session, user_id: id):
 # Email : Background Task
 from util.email_utils import send_email
 
+
 def send_welcome_email(email: str):
     subject = "Welcome to our platform!"
     body = f"""
