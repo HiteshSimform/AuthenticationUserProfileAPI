@@ -1,0 +1,22 @@
+version: '3.11.11'
+services:
+  postgres:
+    image: postgres
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: userapi
+      POSTGRES_PASSWORD: hitesh123
+
+  fastapi:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: userapi
+      POSTGRES_PASSWORD: hitesh123
+      POSTGRES_HOST: postgres
+    depends_on:
+      - postgres
