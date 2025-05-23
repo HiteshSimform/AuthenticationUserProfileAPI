@@ -54,7 +54,7 @@ from typing import Annotated
 from fastapi.security import OAuth2PasswordRequestForm
 
 # from util.emails import send_registration_email
-from util.tasks import send_registration_email
+from config.celery_worker import send_registration_email
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 

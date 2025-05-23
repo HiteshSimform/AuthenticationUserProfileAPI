@@ -1,35 +1,11 @@
-# from celery import Celery
-# from config.config import settings
-
-# celery_app = Celery(
-#     "worker",
-#     broker=settings.REDIS_BROKER_URL,
-#     backend=settings.REDIS_RESULT_BACKEND,
-# )
-
-# celery_app.conf.task_routes = {
-#     "tasks.send_registration_email": {"queue": "emails"},
-# }
-
-# from celery import Celery
-# from config.config import settings
-
-# celery_app = Celery(
-#     "worker",
-#     broker=settings.REDIS_BROKER_URL,
-#     backend=settings.REDIS_RESULT_BACKEND,
-# )
-
-# celery_app.conf.task_routes = {
-#     "util.emails.send_registration_email": {"queue": "emails"},
-# }
-
 from celery import Celery
+import asyncio
+from util.emails import send_email_async
 
 celery_app = Celery(
     "worker",
-    broker="redis://localhost:6379/0",  # Redis as broker
-    backend="redis://localhost:6379/0",  # Optional: result backend
+    broker="redis://localhost:6379/0",
+    backend="redis://localhost:6379/0",
 )
 
 celery_app.conf.update(
@@ -37,3 +13,9 @@ celery_app.conf.update(
     accept_content=["json"],
     result_serializer="json",
 )
+
+@celery_app.task(bind=True, autoretry_for=(Exception,), retry_backoff=True)
+def send_registration_email(self, email: str, username: str):
+    subject = "Welcome to Our App!"
+    body = f"Hi {username}, thank you for registering."
+    asyncio.run(send_email_async(subject, email, body))
