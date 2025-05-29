@@ -2,6 +2,8 @@ from config.config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+# This code snippet is setting up database connections using SQLAlchemy in Python. Here's a breakdown
+# of what each part does:
 postgres_engine = create_engine(
     settings.POSTGRES_DATABASE_URL,
     echo=settings.SQLALCHEMY_ECHO,

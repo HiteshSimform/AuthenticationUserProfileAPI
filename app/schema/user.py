@@ -5,6 +5,8 @@ from typing import Optional
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
+# The class `Gender` defines an enumeration with options for male, female, other, and undisclosed
+# genders.
 class Gender(str, Enum):
     male = "male"
     female = "female"
@@ -12,6 +14,8 @@ class Gender(str, Enum):
     undisclosed = "undisclosed"
 
 
+# The class `UserRole` defines an enumeration of user roles with values for user, admin, moderator,
+# and manager.
 class UserRole(str, Enum):
     user = "user"
     admin = "admin"
@@ -19,6 +23,8 @@ class UserRole(str, Enum):
     manager = "manager"
 
 
+# This class defines a user model with fields for username, email, hashed password, full name, bio,
+# age, gender, and role, along with validation methods for password and username.
 class UserCreate(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
     email: str
@@ -45,6 +51,8 @@ class UserCreate(BaseModel):
         return self.gender.value
 
 
+# The class `UserLogin` defines a data model for user login information with a validation method for
+# password length.
 class UserLogin(BaseModel):
     username: str
     password: str
@@ -56,6 +64,8 @@ class UserLogin(BaseModel):
         return password
 
 
+# The class `UserUpdate` defines fields for updating user information with validation for the hashed
+# password length.
 class UserUpdate(BaseModel):
     full_name: Optional[str]
     bio: Optional[str]
@@ -70,6 +80,8 @@ class UserUpdate(BaseModel):
         return password
 
 
+# The class `UserOut` defines a data model for user information with specified fields and
+# configurations for ORM mode.
 class UserOut(BaseModel):
     public_id: str
     username: str

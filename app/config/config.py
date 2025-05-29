@@ -4,6 +4,8 @@ from pydantic_settings import BaseSettings
 load_dotenv()
 
 
+# This Python class defines settings for a web application, including database URLs, secret key, email
+# configuration, and Redis settings.
 class Settings(BaseSettings):
     DATABASE_TYPE: str = "postgres"
     POSTGRES_DATABASE_URL: str

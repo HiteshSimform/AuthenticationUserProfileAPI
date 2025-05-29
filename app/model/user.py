@@ -23,6 +23,8 @@ class Gender(enum.Enum):
     UNDISCLOSED = "undisclosed"
 
 
+# This Python class defines a User model with various attributes such as username, email, hashed
+# password, full name, bio, age, gender, role, and timestamps.
 class User(Base):
     __tablename__ = "users"
 
