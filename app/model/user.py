@@ -2,10 +2,10 @@ import enum
 import uuid
 
 from db.base import Base
-from sqlalchemy import Boolean, Column, Date, DateTime
-from sqlalchemy import Enum
-from sqlalchemy import Enum as SqlEnum
-from sqlalchemy import Integer, String, Text
+
+# from sqlalchemy import Enum
+# from sqlalchemy import Enum as SqlEnum
+from sqlalchemy import Boolean, Column, DateTime, Integer, String, Text
 from sqlalchemy.sql import func
 
 
@@ -27,9 +27,7 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    public_id = Column(
-        String(36), unique=True, index=True, default=lambda: str(uuid.uuid4())
-    )
+    public_id = Column(String(36), unique=True, index=True, default=lambda: str(uuid.uuid4()))
 
     username = Column(String(50), unique=True, nullable=False)
     email = Column(String(100), unique=True, nullable=False, index=True)

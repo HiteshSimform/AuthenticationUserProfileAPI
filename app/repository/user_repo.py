@@ -1,5 +1,5 @@
 from model.user import User
-from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
+from schema.user import UserCreate, UserOut, UserUpdate
 from sqlalchemy.orm import Session
 
 
@@ -12,13 +12,11 @@ def create_user(db: Session, user_data: UserCreate) -> UserOut:
 
 
 def get_user_by_id(db: Session, user_id: int) -> UserOut:
-    return (
-        db.query(User).filter(User.id == str(user_id), User.is_deleted == False).first()
-    )
+    return db.query(User).filter(User.id == str(user_id), User.is_deleted is False).first()
 
 
 def get_all_users(db: Session):
-    return db.query(User).filter(User.is_deleted == False).all()
+    return db.query(User).filter(User.is_deleted is False).all()
 
 
 def update_user(db: Session, user_id: int, user_data: UserUpdate) -> UserOut:

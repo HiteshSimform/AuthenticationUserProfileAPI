@@ -1,5 +1,4 @@
 from core.jwt import verify_access_token
-from db.sessions import PostgresSessionLocal, SQLiteSessionLocal
 from dependencies.db_dependencies import get_db_session
 from fastapi import Depends, HTTPException
 from fastapi.security import OAuth2PasswordBearer
@@ -9,9 +8,7 @@ from sqlalchemy.orm import Session
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
-def get_current_user(
-    token: str = Depends(oauth2_scheme), db: Session = Depends(get_db_session)
-):
+def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db_session)):
     payload = verify_access_token(token)
     if not payload:
         raise HTTPException(status_code=401, detail="Invalid or Expired Token")

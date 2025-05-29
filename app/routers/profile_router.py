@@ -32,8 +32,6 @@ def admin_access(current_user: User = Depends(get_admin_user)):
 
 
 @router.get("/users")
-def get_all_users(
-    current_user: User = Depends(get_admin_user), db: Session = Depends(get_db_session)
-):
-    users = db.query(User).filter(User.is_deleted == False).all()
+def get_all_users(current_user: User = Depends(get_admin_user), db: Session = Depends(get_db_session)):
+    users = db.query(User).filter(User.is_deleted is False).all()
     return users

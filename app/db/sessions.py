@@ -13,7 +13,5 @@ sqlite_engine = create_engine(
     echo=settings.SQLALCHEMY_ECHO,
 )
 
-PostgresSessionLocal = sessionmaker(
-    bind=postgres_engine, autoflush=False, autocommit=False
-)
+PostgresSessionLocal = sessionmaker(bind=postgres_engine, autoflush=False, autocommit=False)
 SQLiteSessionLocal = sessionmaker(bind=sqlite_engine, autoflush=False, autocommit=False)

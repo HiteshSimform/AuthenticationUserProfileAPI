@@ -6,11 +6,7 @@ from sqlalchemy.orm import Session
 
 
 def get_db_session() -> Generator[Session, None, None]:
-    SessionLocal = (
-        PostgresSessionLocal
-        if settings.DATABASE_TYPE == "postgres"
-        else SQLiteSessionLocal
-    )
+    SessionLocal = PostgresSessionLocal if settings.DATABASE_TYPE == "postgres" else SQLiteSessionLocal
     db = SessionLocal()
     try:
         yield db

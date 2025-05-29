@@ -1,10 +1,11 @@
 from typing import List
 
-from dependencies.auth import get_admin_user, get_current_user
+from dependencies.auth import get_current_user
 from dependencies.db_dependencies import get_db_session
 from fastapi import APIRouter, BackgroundTasks, Depends, status
+from fastapi.logger import logger
 from model.user import User
-from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
+from schema.user import UserCreate, UserOut, UserUpdate
 from services import user_service
 from sqlalchemy.orm import Session
 
@@ -15,8 +16,6 @@ router = APIRouter(prefix="/users", tags=["Users"])
 # def create_user(user_data: UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db_session)):
 #     background_tasks.add_task(user_service.send_welcome_email, user_data.email)
 #     return user_service.create_user_service(db, user_data)
-
-from fastapi.logger import logger
 
 
 @router.post("/", response_model=UserOut, status_code=status.HTTP_201_CREATED)

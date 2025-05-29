@@ -31,21 +31,14 @@ class UserCreate(BaseModel):
 
     @field_validator("hashed_password")
     def validate_password(cls, password: str):
-        if not all(
-            re.search(pattern, password)
-            for pattern in [r"[A-Z]", r"[a-z]", r"[0-9]", r"[\W_]"]
-        ):
-            raise ValueError(
-                "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
-            )
+        if not all(re.search(pattern, password) for pattern in [r"[A-Z]", r"[a-z]", r"[0-9]", r"[\W_]"]):
+            raise ValueError("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.")
         return password
 
     @field_validator("username")
     def validate_username(cls, username: str):
         if not re.match(r"[a-zA-Z0-9_]+$", username):
-            raise ValueError(
-                "Username must contain alphanumeric characters or underscores."
-            )
+            raise ValueError("Username must contain alphanumeric characters or underscores.")
         return username
 
     def get_gender_value(self):

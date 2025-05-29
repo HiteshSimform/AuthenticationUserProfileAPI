@@ -1,6 +1,6 @@
 from fastapi import HTTPException
 from repository import user_repo
-from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
+from schema.user import UserCreate, UserUpdate
 from sqlalchemy.orm import Session
 from util.email_utils import send_email
 
@@ -40,7 +40,7 @@ def delete_user_service(db: Session, user_id: int):
 
 def send_welcome_email(email: str):
     subject = "Welcome to our platform!"
-    body = f"""
+    body = """
     Hi there!
 
     🎉 Thank you for registering at our platform.
