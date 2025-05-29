@@ -43,7 +43,7 @@ def send_welcome_email(email: str):
     body = """
     Hi there!
 
-    🎉 Thank you for registering at our platform.
+    Thank you for registering at our platform.
     We're excited to have you on board!
 
     Regards,

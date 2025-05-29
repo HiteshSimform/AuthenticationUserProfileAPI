@@ -12,19 +12,12 @@ from sqlalchemy.orm import Session
 router = APIRouter(prefix="/users", tags=["Users"])
 
 
-# @router.post("/", response_model=UserCreate, status_code=status.HTTP_201_CREATED)
-# def create_user(user_data: UserCreate, background_tasks: BackgroundTasks, db: Session = Depends(get_db_session)):
-#     background_tasks.add_task(user_service.send_welcome_email, user_data.email)
-#     return user_service.create_user_service(db, user_data)
-
-
 @router.post("/", response_model=UserOut, status_code=status.HTTP_201_CREATED)
 def create_user(
     user_data: UserCreate,
     background_tasks: BackgroundTasks,
     db: Session = Depends(get_db_session),
 ):
-    # breakpoint()
     background_tasks.add_task(user_service.send_welcome_email, user_data.email)
     logger.info(f"Background task scheduled: send_welcome_email to {user_data.email}")
     return user_service.create_user_service(db, user_data)

@@ -14,12 +14,6 @@ def get_env_var(name: str) -> str:
     return value
 
 
-# SMTP_SERVER = os.getenv("SMTP_SERVER")
-# SMTP_PORT = int(os.getenv("SMTP_PORT"))
-# EMAIL_ADDRESS = os.getenv("EMAIL_SENDER_ADDRESS")
-# EMAIL_PASSWORD = os.getenv("EMAIL_SENDER_PASSWORD")
-
-
 SMTP_SERVER = get_env_var("SMTP_SERVER")
 SMTP_PORT = int(get_env_var("SMTP_PORT"))
 EMAIL_ADDRESS = get_env_var("EMAIL_SENDER_ADDRESS")
