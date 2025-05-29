@@ -2,7 +2,10 @@ from email.message import EmailMessage
 import aiosmtplib
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
+
+
 async def send_email_async(subject: str, to_email: str, body: str):
     EMAIL_HOST = "smtp.gmail.com"
     EMAIL_PORT = 587
