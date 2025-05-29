@@ -1,7 +1,8 @@
-from sqlalchemy.orm import Session
-from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
-from repository import user_repo
 from fastapi import HTTPException
+from repository import user_repo
+from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
+from sqlalchemy.orm import Session
+from util.email_utils import send_email
 
 
 def create_user_service(db: Session, user_data: UserCreate):
@@ -12,7 +13,7 @@ def get_all_user_service(db: Session):
     return user_repo.get_all_users(db)
 
 
-def get_user_service(db: Session, user_id: id):
+def get_user_service(db: Session, user_id: int):
     user = user_repo.get_user_by_id(db, user_id)
     print("-------------------------------------------------------------------", user)
     if not user:
@@ -20,14 +21,14 @@ def get_user_service(db: Session, user_id: id):
     return user
 
 
-def update_user_service(db: Session, user_id: id, user_data: UserUpdate):
+def update_user_service(db: Session, user_id: int, user_data: UserUpdate):
     user = user_repo.update_user(db, user_id, user_data)
     if not user:
         raise HTTPException(status_code=404, detail="User not Found")
     return user
 
 
-def delete_user_service(db: Session, user_id: id):
+def delete_user_service(db: Session, user_id: int):
     success = user_repo.delete_user(db, user_id)
     if not success:
         raise HTTPException(status_code=404, detail="User not Found")
@@ -35,7 +36,6 @@ def delete_user_service(db: Session, user_id: id):
 
 
 # Email : Background Task
-from util.email_utils import send_email
 
 
 def send_welcome_email(email: str):

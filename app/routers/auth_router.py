@@ -1,4 +1,15 @@
-from fastapi import APIRouter, Depends, HTTPException, Form
+from typing import Annotated
+
+# from util.emails import send_registration_email
+from config.celery_worker import send_registration_email
+from core.jwt import create_access_token
+from core.security import hash_password, verify_password
+from dependencies.db_dependencies import get_db_session
+from fastapi import APIRouter, Depends, Form, HTTPException
+from fastapi.security import OAuth2PasswordRequestForm
+from model.user import User
+from schema.user import UserCreate, UserLogin
+from sqlalchemy.orm import Session
 
 # from sqlalchemy.orm import Session
 # from schema.user import UserCreate, UserLogin
@@ -43,18 +54,6 @@ from fastapi import APIRouter, Depends, HTTPException, Form
 
 #     return {"msg":"User registered successfully"}
 
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
-from schema.user import UserCreate, UserLogin
-from model.user import User
-from core.security import hash_password, verify_password
-from dependencies.db_dependencies import get_db_session
-from core.jwt import create_access_token
-from typing import Annotated
-from fastapi.security import OAuth2PasswordRequestForm
-
-# from util.emails import send_registration_email
-from config.celery_worker import send_registration_email
 
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 

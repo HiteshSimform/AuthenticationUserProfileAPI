@@ -1,8 +1,8 @@
-from datetime import datetime, timedelta, timezone
-from jose import JWTError, jwt
-from config.config import settings
 import os
+from datetime import datetime, timedelta, timezone
+
 from dotenv import load_dotenv
+from jose import JWTError, jwt
 
 load_dotenv()
 ALGORITHM = os.getenv("ALGORITHM")

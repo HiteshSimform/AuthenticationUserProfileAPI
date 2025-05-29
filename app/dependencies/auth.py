@@ -1,12 +1,10 @@
-from fastapi import Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
 from core.jwt import verify_access_token
-from sqlalchemy.orm import Session
 from db.sessions import PostgresSessionLocal, SQLiteSessionLocal
-from config.config import settings
-from model.user import User
 from dependencies.db_dependencies import get_db_session
-import jwt
+from fastapi import Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
+from model.user import User
+from sqlalchemy.orm import Session
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 

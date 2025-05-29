@@ -1,9 +1,9 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from schema.user import UserOut, UserUpdate
-from model.user import User
-from dependencies.auth import get_current_user, get_admin_user
+from dependencies.auth import get_admin_user, get_current_user
 from dependencies.db_dependencies import get_db_session
+from fastapi import APIRouter, Depends
+from model.user import User
+from schema.user import UserOut, UserUpdate
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/profile", tags=["Profile"])
 

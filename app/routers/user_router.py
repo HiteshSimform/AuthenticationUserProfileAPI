@@ -1,11 +1,12 @@
-from fastapi import APIRouter, Depends, status, BackgroundTasks
 from typing import List
-from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
-from sqlalchemy.orm import Session
-from services import user_service
+
+from dependencies.auth import get_admin_user, get_current_user
 from dependencies.db_dependencies import get_db_session
-from dependencies.auth import get_current_user, get_admin_user
+from fastapi import APIRouter, BackgroundTasks, Depends, status
 from model.user import User
+from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
+from services import user_service
+from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/users", tags=["Users"])
 

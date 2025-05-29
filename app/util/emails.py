@@ -1,6 +1,7 @@
-from email.message import EmailMessage
-import aiosmtplib
 import os
+from email.message import EmailMessage
+
+import aiosmtplib
 from dotenv import load_dotenv
 
 load_dotenv()

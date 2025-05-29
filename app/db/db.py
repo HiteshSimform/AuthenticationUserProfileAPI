@@ -1,6 +1,6 @@
-from db.sessions import sqlite_engine, postgres_engine
-from db.base import Base
 from config.config import settings
+from db.base import Base
+from db.sessions import postgres_engine, sqlite_engine
 
 
 def get_active_engine():

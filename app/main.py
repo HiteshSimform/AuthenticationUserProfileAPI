@@ -1,10 +1,8 @@
-from fastapi import FastAPI, Depends
-from fastapi.security import OAuth2PasswordBearer
-from typing import Annotated
-from db.db import create_all_tables
 from contextlib import asynccontextmanager
-from model.user import User
-from routers import user_router, auth_router, profile_router
+
+from db.db import create_all_tables
+from fastapi import FastAPI
+from routers import auth_router, profile_router, user_router
 
 
 @asynccontextmanager

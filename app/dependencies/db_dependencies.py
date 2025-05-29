@@ -1,7 +1,8 @@
+from typing import Generator
+
+from config.config import settings
 from db.sessions import PostgresSessionLocal, SQLiteSessionLocal
 from sqlalchemy.orm import Session
-from typing import Generator
-from config.config import settings
 
 
 def get_db_session() -> Generator[Session, None, None]:

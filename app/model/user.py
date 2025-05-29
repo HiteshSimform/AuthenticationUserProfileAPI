@@ -1,18 +1,12 @@
-from sqlalchemy import (
-    Column,
-    String,
-    Text,
-    Date,
-    Enum,
-    Boolean,
-    DateTime,
-    Integer,
-    Enum as SqlEnum,
-)
-from sqlalchemy.sql import func
-from db.base import Base
 import enum
 import uuid
+
+from db.base import Base
+from sqlalchemy import Boolean, Column, Date, DateTime
+from sqlalchemy import Enum
+from sqlalchemy import Enum as SqlEnum
+from sqlalchemy import Integer, String, Text
+from sqlalchemy.sql import func
 
 
 class UserRole(enum.Enum):

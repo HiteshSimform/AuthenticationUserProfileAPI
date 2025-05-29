@@ -1,6 +1,6 @@
-from sqlalchemy.orm import Session
 from model.user import User
 from schema.user import UserCreate, UserLogin, UserOut, UserUpdate
+from sqlalchemy.orm import Session
 
 
 def create_user(db: Session, user_data: UserCreate) -> UserOut:
@@ -21,8 +21,8 @@ def get_all_users(db: Session):
     return db.query(User).filter(User.is_deleted == False).all()
 
 
-def update_user(db: Session, user_id: id, user_data: UserUpdate) -> UserOut:
-    user = get_user_by_id(db, str(user_id))
+def update_user(db: Session, user_id: int, user_data: UserUpdate) -> UserOut:
+    user = get_user_by_id(db, user_id)
     if user:
         for key, value in user_data.model_dump(exclude_unset=True).items():
             setattr(user, key, value)
