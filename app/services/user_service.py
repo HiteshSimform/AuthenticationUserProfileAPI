@@ -6,6 +6,21 @@ from util.email_utils import send_email
 
 
 def create_user_service(db: Session, user_data: UserCreate):
+    """
+    The function `create_user_service` creates a new user in the database using the provided user data.
+
+    :param db: The `db` parameter is of type `Session`, which likely refers to a database session object
+    used for database operations. It is typically used to interact with the database to perform
+    operations like creating, updating, or querying data
+    :type db: Session
+    :param user_data: The `user_data` parameter in the `create_user_service` function likely contains
+    the data needed to create a new user. This data could include information such as the user's
+    username, email, password, and any other relevant details required to create a user account
+    :type user_data: UserCreate
+    :return: The `create_user_service` function is returning the result of calling the `create_user`
+    function from the `user_repo` module with the provided database session (`db`) and user data
+    (`user_data`).
+    """
     return user_repo.create_user(db, user_data)
 
 
